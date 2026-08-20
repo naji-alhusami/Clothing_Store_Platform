@@ -1,49 +1,8 @@
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 import { ProductCard } from "@/components/product/product-card";
-
-const offers = [
-  {
-    name: "فستان بناتي أنيق",
-    category: "بناتي",
-    age: "5 - 7 سنوات",
-    originalPrice: "150,000 ل.س",
-    price: "110,000 ل.س",
-    availability: "متوفر" as const,
-    discount: "خصم 27%",
-    placeholderTone: "rose" as const,
-  },
-  {
-    name: "كنزة صبياني دافئة",
-    category: "صبياني",
-    age: "6 - 8 سنوات",
-    originalPrice: "120,000 ل.س",
-    price: "90,000 ل.س",
-    availability: "متوفر" as const,
-    discount: "خصم 25%",
-    placeholderTone: "blue" as const,
-  },
-  {
-    name: "طقم مواليد قطني",
-    category: "بيبي",
-    age: "0 - 9 أشهر",
-    originalPrice: "95,000 ل.س",
-    price: "72,000 ل.س",
-    availability: "متوفر" as const,
-    discount: "عرض",
-    placeholderTone: "sage" as const,
-  },
-  {
-    name: "قميص يومي مريح",
-    category: "السن المحير",
-    age: "11 - 14 سنة",
-    originalPrice: "105,000 ل.س",
-    price: "79,000 ل.س",
-    availability: "غير متوفر" as const,
-    discount: "خصم 25%",
-    placeholderTone: "sand" as const,
-  },
-];
+import { featuredOffers } from "@/data/products";
 
 export function OffersSection() {
   return (
@@ -74,19 +33,19 @@ export function OffersSection() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-12 lg:grid-cols-4">
-          {offers.map((offer) => (
-            <ProductCard key={offer.name} {...offer} />
+          {featuredOffers.map((offer) => (
+            <ProductCard key={offer.id} {...offer} />
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <a
-            href="#"
+          <Link
+            href="/offers"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#e5232a] px-7 text-sm font-bold text-white transition-colors hover:bg-[#cf1820] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5232a]"
           >
             عرض جميع العروض
             <ArrowLeft className="size-4" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

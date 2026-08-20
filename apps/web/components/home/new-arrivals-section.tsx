@@ -1,41 +1,8 @@
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 import { ProductCard } from "@/components/product/product-card";
-
-const products = [
-  {
-    name: "طقم أطفال شتوي",
-    category: "صبياني",
-    age: "4 - 6 سنوات",
-    price: "125,000 ل.س",
-    availability: "متوفر" as const,
-    placeholderTone: "blue" as const,
-  },
-  {
-    name: "فستان قطني ناعم",
-    category: "بناتي",
-    age: "5 - 7 سنوات",
-    price: "135,000 ل.س",
-    availability: "متوفر" as const,
-    placeholderTone: "rose" as const,
-  },
-  {
-    name: "طقم بيبي مريح",
-    category: "بيبي",
-    age: "0 - 12 شهراً",
-    price: "85,000 ل.س",
-    availability: "متوفر" as const,
-    placeholderTone: "sage" as const,
-  },
-  {
-    name: "جاكيت عملي خفيف",
-    category: "السن المحير",
-    age: "10 - 13 سنة",
-    price: "175,000 ل.س",
-    availability: "غير متوفر" as const,
-    placeholderTone: "sand" as const,
-  },
-];
+import { newArrivals } from "@/data/products";
 
 export function NewArrivalsSection() {
   return (
@@ -65,19 +32,19 @@ export function NewArrivalsSection() {
           </div>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-12 lg:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.name} {...product} />
+          {newArrivals.map((product) => (
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <a
-            href="#"
+          <Link
+            href="/products"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#d9d1c7] bg-white px-7 text-sm font-bold text-[#393633] transition-colors hover:border-[#e5232a]/50 hover:text-[#e5232a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5232a]"
           >
             عرض جميع المنتجات
             <ArrowLeft className="size-4" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

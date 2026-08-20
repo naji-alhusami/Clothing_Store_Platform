@@ -2,12 +2,13 @@
 
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
 const navigation = [
-  { label: "الرئيسية", href: "#home" },
-  { label: "المنتجات", href: "#new-arrivals" },
-  { label: "العروض", href: "#offers" },
+  { label: "الرئيسية", href: "/#home" },
+  { label: "المنتجات", href: "/#new-arrivals" },
+  { label: "العروض", href: "/#offers" },
   { label: "عن المحل", href: "#" },
   { label: "تواصل معنا", href: "#" },
 ];
@@ -48,8 +49,8 @@ export function Navbar() {
         className="mx-auto grid h-20  grid-cols-[1fr_auto] items-center px-5 sm:px-8 md:grid-cols-[1fr_auto_1fr] md:gap-5 lg:h-24 lg:px-10"
         aria-label="التنقل الرئيسي"
       >
-        <a
-          href="#home"
+        <Link
+          href="/#home"
           className="col-start-1 row-start-1 shrink-0 justify-self-start rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5232a]"
           aria-label="Kids Home - الصفحة الرئيسية"
         >
@@ -61,7 +62,7 @@ export function Navbar() {
             priority
             className="h-14 w-auto object-contain lg:h-18"
           />
-        </a>
+        </Link>
 
         <ul
           dir="rtl"
