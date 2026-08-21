@@ -15,12 +15,16 @@ export const productAgeRanges = [
 
 export type ProductCategory = (typeof productCategories)[number];
 export type PlaceholderTone = "rose" | "blue" | "sand" | "sage";
+export type ProductSeason = "summer" | "winter";
 
 export interface Product {
   id: string;
+  slug: string;
   name: string;
   category: ProductCategory;
+  season: ProductSeason;
   ageRange: string;
+  ageRanges: string[];
   sizes: string[];
   colors: string[];
   price: number;
@@ -29,6 +33,7 @@ export interface Product {
   images?: string[];
   description: string;
   available: boolean;
+  featured: boolean;
   placeholderTone: PlaceholderTone;
 }
 
@@ -101,10 +106,15 @@ const productSeeds: ProductSeed[] = [
   { id: "junior-relaxed-set", name: "طقم شبابي مريح", category: "السن المحيّر", ageRange: "10 - 13 سنة", price: 126000, originalPrice: 158000 },
 ];
 
-export const products: Product[] = productSeeds.map((product) => ({
+export const products: Product[] = productSeeds.map((product, index) => ({
   ...categoryDefaults[product.category],
   ...product,
+  slug: product.id,
+  season: index % 2 === 0 ? "winter" : "summer",
+  ageRanges: [product.ageRange],
+  images: [],
   available: product.available ?? true,
+  featured: index < 4,
 }));
 
 export const offers = products.filter((product) => product.originalPrice);
